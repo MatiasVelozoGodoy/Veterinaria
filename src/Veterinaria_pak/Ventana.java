@@ -1,14 +1,11 @@
 package Veterinaria_pak;
 import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 // import javax.swing.JTextArea;
 
 public class Ventana extends JFrame{
     public Ventana(){
 
-
+        setResizable(false);
         this.setVisible(true);
         this.setSize(600,600);
         this.setLayout(null);
