@@ -1,5 +1,6 @@
 package Veterinaria_pak;
 
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,11 +11,11 @@ public class Ventana extends JFrame{
     public Ventana(){
 
         setResizable(false);
-        this.setVisible(true);
-        this.setSize(600,600);
-        this.setLayout(null);
-        this.setLocationRelativeTo(null);
-        this.setTitle("Veterinaria");
+        setVisible(true);
+        setSize(600,600);
+        setLayout(null);
+        setLocationRelativeTo(null);
+        setTitle("Veterinaria");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         botones();
         etiquetas();
@@ -23,22 +24,26 @@ public class Ventana extends JFrame{
     }
 
     public void botones(){
-        JButton boton = new JButton("Agregar");
-        JButton boton2 = new JButton("Modificar");
-        JButton boton3 = new JButton("Eliminar");
-        JButton boton4 = new JButton("Detalles");
-        boton.setBounds(100,500,90,40);
-        boton.setFocusable(false);
-        boton2.setBounds(210,500,90,40);
-        boton2.setFocusable(false);
-        boton3.setBounds(320,500,90,40);
-        boton3.setFocusable(false);
-        boton4.setBounds(430,500,90,40);
-        boton4.setFocusable(false);
-        this.add(boton);
-        this.add(boton2);
-        this.add(boton3);
-        this.add(boton4);
+        JButton btnAgregar = new JButton("Agregar");
+        JButton btnModificar = new JButton("Modificar");
+        JButton btnEliminar = new JButton("Eliminar");
+        JButton btnDetalles = new JButton("Detalles");
+        btnAgregar.setBounds(100,500,90,40);
+        btnAgregar.setFocusable(false);
+        btnModificar.setBounds(210,500,90,40);
+        btnModificar.setFocusable(false);
+        btnEliminar.setBounds(320,500,90,40);
+        btnEliminar.setFocusable(false);
+        btnDetalles.setBounds(430,500,90,40);
+        btnDetalles.setFocusable(false);
+        this.add(btnAgregar);
+        this.add(btnModificar);
+        this.add(btnEliminar);
+        this.add(btnDetalles);
+        btnAgregar.setBackground(Color.GREEN.darker());
+        btnEliminar.setBackground(Color.RED.darker());
+        btnDetalles.setBackground(Color.BLUE.darker());
+        btnModificar.setBackground(Color.yellow.darker());
 
     }
 
