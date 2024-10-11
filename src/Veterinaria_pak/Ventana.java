@@ -41,9 +41,13 @@ public class Ventana extends JFrame{
         this.add(btnEliminar);
         this.add(btnDetalles);
         btnAgregar.setBackground(Color.GREEN.darker());
+        btnAgregar.setForeground(Color.WHITE);
         btnEliminar.setBackground(Color.RED.darker());
+        btnEliminar.setForeground(Color.WHITE);
         btnDetalles.setBackground(Color.BLUE.darker());
+        btnDetalles.setForeground(Color.WHITE);
         btnModificar.setBackground(Color.yellow.darker());
+        btnModificar.setForeground(Color.WHITE);
 
     }
 
@@ -83,5 +87,6 @@ public class Ventana extends JFrame{
         mostrar.setBounds(40, 200, 500, 270);
         this.add(mostrar);
     }
+
 
 }
