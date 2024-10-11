@@ -15,6 +15,7 @@ public class Ventana extends JFrame {
     private JTextField textoApellido;
     private JTextField textoDNI;
     private JTextField textoNacionalidad;
+    private JTextArea mostrar;
 
     public Ventana() {
 
@@ -58,7 +59,13 @@ public class Ventana extends JFrame {
         btnModificar.setForeground(Color.WHITE);
 
         ActionListener agregarr = (ActionEvent e) -> {
-            System.out.println("GOLAAAAAAAAAAAAAA");
+            if (!mostrar.equals((String)textoDNI.getText())) {
+                mostrar.append("\n Nombre: " + textoNombre.getText() + "\n Apellido: " + textoApellido.getText()
+                        + "\n DNI: " + textoDNI.getText() + "\n Nacionalidad: " + textoNacionalidad.getText());
+            }else{
+                mostrar.append("Ya existe");
+            }
+
         };
         btnAgregar.addActionListener(agregarr);
 
@@ -91,6 +98,7 @@ public class Ventana extends JFrame {
         this.add(textoNombre);
         textoApellido = new JTextField();
         textoApellido.setBounds(120, 80, 200, 20);
+        this.add(textoApellido);
         textoDNI = new JTextField();
         textoDNI.setBounds(120, 110, 200, 20);
         this.add(textoDNI);
@@ -100,7 +108,7 @@ public class Ventana extends JFrame {
     }
 
     public void mostrar() {
-        JTextArea mostrar = new JTextArea();
+        mostrar = new JTextArea();
         mostrar.setBounds(40, 200, 500, 270);
         this.add(mostrar);
     }
