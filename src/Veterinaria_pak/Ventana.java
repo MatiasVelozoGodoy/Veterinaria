@@ -1,6 +1,8 @@
 package Veterinaria_pak;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -48,6 +50,16 @@ public class Ventana extends JFrame{
         btnDetalles.setForeground(Color.WHITE);
         btnModificar.setBackground(Color.yellow.darker());
         btnModificar.setForeground(Color.WHITE);
+                
+        ActionListener agregarr = (ActionEvent e) -> {
+            System.out.println("GOLAAAAAAAAAAAAAA");
+        };
+        btnAgregar.addActionListener(agregarr);
+
+        ActionListener eliminarr = (ActionEvent e) -> {
+            System.out.println("CUJAUUUUUUUUUUUU");
+        };
+        btnEliminar.addActionListener(eliminarr);
 
     }
 
