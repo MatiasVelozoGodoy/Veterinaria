@@ -3,6 +3,7 @@ package Veterinaria_pak;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,7 +11,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class Ventana extends JFrame {
-
+    HashSet<String> dnisRegistrados = new HashSet<>();
     private JTextField textoNombre;
     private JTextField textoApellido;
     private JTextField textoDNI;
@@ -59,11 +60,13 @@ public class Ventana extends JFrame {
         btnModificar.setForeground(Color.WHITE);
 
         ActionListener agregarr = (ActionEvent e) -> {
-            if (!mostrar.equals((String)textoDNI.getText())) {
+            String dni = textoDNI.getText();
+            if (!dnisRegistrados.contains(dni)) {
+                dnisRegistrados.add(dni);
                 mostrar.append("\n Nombre: " + textoNombre.getText() + "\n Apellido: " + textoApellido.getText()
-                        + "\n DNI: " + textoDNI.getText() + "\n Nacionalidad: " + textoNacionalidad.getText());
+                        + "\n DNI: " + dni + "\n Nacionalidad: " + textoNacionalidad.getText());
             }else{
-                mostrar.append("Ya existe");
+                mostrar.append("El usuario que quieres agregar ya existe");
             }
 
         };
