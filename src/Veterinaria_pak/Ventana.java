@@ -9,12 +9,18 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class Ventana extends JFrame{
-    public Ventana(){
+public class Ventana extends JFrame {
+
+    private JTextField textoNombre;
+    private JTextField textoApellido;
+    private JTextField textoDNI;
+    private JTextField textoNacionalidad;
+
+    public Ventana() {
 
         setResizable(false);
         setVisible(true);
-        setSize(600,600);
+        setSize(600, 600);
         setLayout(null);
         setLocationRelativeTo(null);
         setTitle("Veterinaria");
@@ -25,18 +31,18 @@ public class Ventana extends JFrame{
         mostrar();
     }
 
-    public void botones(){
+    public void botones() {
         JButton btnAgregar = new JButton("Agregar");
         JButton btnModificar = new JButton("Modificar");
         JButton btnEliminar = new JButton("Eliminar");
         JButton btnDetalles = new JButton("Detalles");
-        btnAgregar.setBounds(100,500,90,40);
+        btnAgregar.setBounds(100, 500, 90, 40);
         btnAgregar.setFocusable(false);
-        btnModificar.setBounds(210,500,90,40);
+        btnModificar.setBounds(210, 500, 90, 40);
         btnModificar.setFocusable(false);
-        btnEliminar.setBounds(320,500,90,40);
+        btnEliminar.setBounds(320, 500, 90, 40);
         btnEliminar.setFocusable(false);
-        btnDetalles.setBounds(430,500,90,40);
+        btnDetalles.setBounds(430, 500, 90, 40);
         btnDetalles.setFocusable(false);
         this.add(btnAgregar);
         this.add(btnModificar);
@@ -50,7 +56,7 @@ public class Ventana extends JFrame{
         btnDetalles.setForeground(Color.WHITE);
         btnModificar.setBackground(Color.yellow.darker());
         btnModificar.setForeground(Color.WHITE);
-                
+
         ActionListener agregarr = (ActionEvent e) -> {
             System.out.println("GOLAAAAAAAAAAAAAA");
         };
@@ -63,7 +69,7 @@ public class Ventana extends JFrame{
 
     }
 
-    public void etiquetas(){
+    public void etiquetas() {
         JLabel nombre = new JLabel("Nombre:");
         nombre.setBounds(40, 10, 100, 100);
         JLabel apellido = new JLabel("Apellido:");
@@ -77,28 +83,26 @@ public class Ventana extends JFrame{
         this.add(DNI);
         this.add(nacionalidad);
 
-
     }
-    public void texto(){
-        JTextField textoNombre = new JTextField();
+
+    public void texto() {
+        textoNombre = new JTextField();
         textoNombre.setBounds(120, 50, 200, 20);
         this.add(textoNombre);
-        JTextField textoApellido = new JTextField();
+        textoApellido = new JTextField();
         textoApellido.setBounds(120, 80, 200, 20);
-        this.add(textoApellido);
-        JTextField textoDNI = new JTextField();
+        textoDNI = new JTextField();
         textoDNI.setBounds(120, 110, 200, 20);
         this.add(textoDNI);
-        JTextField textoNacionalidad = new JTextField();
+        textoNacionalidad = new JTextField();
         textoNacionalidad.setBounds(120, 140, 200, 20);
         this.add(textoNacionalidad);
     }
 
-    public void mostrar(){
+    public void mostrar() {
         JTextArea mostrar = new JTextArea();
         mostrar.setBounds(40, 200, 500, 270);
         this.add(mostrar);
     }
-
 
 }
