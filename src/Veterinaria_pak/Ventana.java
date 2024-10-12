@@ -63,8 +63,10 @@ public class Ventana extends JFrame {
             String dni = textoDNI.getText();
             if (!dnisRegistrados.contains(dni)) {
                 dnisRegistrados.add(dni);
-                mostrar.append("\n Nombre: " + textoNombre.getText() + "\n Apellido: " + textoApellido.getText()
-                        + "\n DNI: " + dni + "\n Nacionalidad: " + textoNacionalidad.getText());
+                mostrar.append("*************************************************");
+                mostrar.append("\nNombre: " + textoNombre.getText() + "\nApellido: " + textoApellido.getText()
+                        + "\nDNI: " + dni + "\nNacionalidad: " + textoNacionalidad.getText() + "\n");
+                mostrar.append("*************************************************\n");
             }else{
                 mostrar.append("El usuario que quieres agregar ya existe");
             }
