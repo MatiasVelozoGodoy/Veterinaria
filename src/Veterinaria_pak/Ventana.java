@@ -67,22 +67,39 @@ public class Ventana extends JFrame {
         btnModificar.setForeground(Color.WHITE);
 
         ActionListener agregarr = (ActionEvent e) -> {
-            String dni = textoDNI.getText();
-            if(!dnisRegistrados.contains(dni)){
-                dnisRegistrados.add(dni);
-            dtm.addRow(new Object[]{textoDNI.getText(), textoNombre.getText(), textoApellido.getText(), textoNacionalidad.getText()
-            });}
-            else{
-                JOptionPane.showMessageDialog(null, "Este persona ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+            if(textoDNI.getText().isEmpty() || textoNombre.getText().isEmpty() || textoApellido.getText().isEmpty() || textoNacionalidad.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Hay campos que faltan rellenar", "Error", JOptionPane.WARNING_MESSAGE);
+            }else{                
+                String dni = textoDNI.getText();
+                if(!dnisRegistrados.contains(dni)){
+                    dnisRegistrados.add(dni);
+                dtm.addRow(new Object[]{textoDNI.getText(), textoNombre.getText(), textoApellido.getText(), textoNacionalidad.getText()
+                });
+                textoDNI.setText("");
+                textoNombre.setText("");
+                textoApellido.setText("");
+                textoNacionalidad.setText("");
+                textoNombre.requestFocusInWindow();
+            }
+                
+                else{
+                    JOptionPane.showMessageDialog(null, "Este persona ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         };
         btnAgregar.addActionListener(agregarr);
 
         ActionListener eliminarr = (ActionEvent e) -> {
             int fila = table.getSelectedRow();
-            dtm.removeRow(fila);
-            if(dnisRegistrados.contains(textoDNI.getText()))
-                dnisRegistrados.remove(textoDNI.getText());
+
+            if (fila != -1) {
+                String dni = (String)dtm.getValueAt(fila, 0);
+                
+                dtm.removeRow(fila);
+                if (dnisRegistrados.contains(dni)) {
+                    dnisRegistrados.remove(dni);
+                }
+            }
         };
         btnEliminar.addActionListener(eliminarr);
 
