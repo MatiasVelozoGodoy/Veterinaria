@@ -65,6 +65,7 @@ public class Ventana extends JFrame {
         btnDetalles.setForeground(Color.WHITE);
         btnModificar.setBackground(Color.yellow.darker());
         btnModificar.setForeground(Color.WHITE);
+        
 
         ActionListener agregarr = (ActionEvent e) -> {
             if(textoDNI.getText().isEmpty() || textoNombre.getText().isEmpty() || textoApellido.getText().isEmpty() || textoNacionalidad.getText().isEmpty()){
@@ -130,6 +131,7 @@ public class Ventana extends JFrame {
         this.add(textoApellido);
         textoDNI = new JTextField();
         textoDNI.setBounds(120, 110, 200, 20);
+        textoDNI.setToolTipText("Solo numeros");
         this.add(textoDNI);
         textoNacionalidad = new JTextField();
         textoNacionalidad.setBounds(120, 140, 200, 20);
