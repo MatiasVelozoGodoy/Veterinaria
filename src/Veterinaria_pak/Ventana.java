@@ -7,8 +7,11 @@ import java.util.HashSet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 
 public class Ventana extends JFrame {
     HashSet<String> dnisRegistrados = new HashSet<>();
@@ -16,11 +19,13 @@ public class Ventana extends JFrame {
     private JTextField textoApellido;
     private JTextField textoDNI;
     private JTextField textoNacionalidad;
-    private JTextArea mostrar;
+    private JScrollPane scroll;
+    private JTable table;
+    private DefaultTableModel dtm;
 
     public Ventana() {
 
-        setResizable(false);
+        // setResizable(false);
         setVisible(true);
         setSize(600, 600);
         setLayout(null);
@@ -30,7 +35,7 @@ public class Ventana extends JFrame {
         botones();
         etiquetas();
         texto();
-        mostrar();
+        columnas();
     }
 
     public void botones() {
@@ -61,16 +66,13 @@ public class Ventana extends JFrame {
 
         ActionListener agregarr = (ActionEvent e) -> {
             String dni = textoDNI.getText();
-            if (!dnisRegistrados.contains(dni)) {
+            if(!dnisRegistrados.contains(dni)){
                 dnisRegistrados.add(dni);
-                mostrar.append("*************************************************");
-                mostrar.append("\nNombre: " + textoNombre.getText() + "\nApellido: " + textoApellido.getText()
-                        + "\nDNI: " + dni + "\nNacionalidad: " + textoNacionalidad.getText() + "\n");
-                mostrar.append("*************************************************\n");
-            }else{
-                mostrar.append("El usuario que quieres agregar ya existe");
+            dtm.addRow(new Object[]{textoDNI.getText(), textoNombre.getText(), textoApellido.getText(), textoNacionalidad.getText()
+            });}
+            else{
+                System.out.println("aaaaaa");
             }
-
         };
         btnAgregar.addActionListener(agregarr);
 
@@ -112,10 +114,21 @@ public class Ventana extends JFrame {
         this.add(textoNacionalidad);
     }
 
-    public void mostrar() {
-        mostrar = new JTextArea();
-        mostrar.setBounds(40, 200, 500, 270);
-        this.add(mostrar);
-    }
+    public void columnas(){
+        String[] columnas = {"DNI", "NOMBRE", "APELLIDO", "NACIONALIDAD"};
 
+
+        
+        dtm = new DefaultTableModel(0, 4);
+        
+        table = new JTable(dtm);
+
+        scroll = new JScrollPane(table);
+        table.setModel(dtm);
+        scroll.setBounds(40, 200, 500, 270);
+        this.add(scroll);
+        dtm.setColumnIdentifiers(columnas);
+        
+
+    }
 }
