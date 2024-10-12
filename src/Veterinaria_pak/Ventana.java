@@ -36,7 +36,7 @@ public class Ventana extends JFrame {
         botones();
         etiquetas();
         texto();
-        columnas();
+        tabla();
     }
 
     public void botones() {
@@ -72,13 +72,15 @@ public class Ventana extends JFrame {
             dtm.addRow(new Object[]{textoDNI.getText(), textoNombre.getText(), textoApellido.getText(), textoNacionalidad.getText()
             });}
             else{
-                JOptionPane.showMessageDialog(null, "Este persona ya existe", "Error", 2);
+                JOptionPane.showMessageDialog(null, "Este persona ya existe", "Error", JOptionPane.ERROR_MESSAGE);
             }
         };
         btnAgregar.addActionListener(agregarr);
 
         ActionListener eliminarr = (ActionEvent e) -> {
-            System.out.println("CUJAUUUUUUUUUUUU");
+            int fila = table.getSelectedRow();
+            dtm.removeRow(fila);
+            dnisRegistrados.remove(textoDNI.getText());
         };
         btnEliminar.addActionListener(eliminarr);
 
@@ -115,7 +117,7 @@ public class Ventana extends JFrame {
         this.add(textoNacionalidad);
     }
 
-    public void columnas(){
+    public void tabla(){
         String[] columnas = {"DNI", "NOMBRE", "APELLIDO", "NACIONALIDAD"};
 
 
@@ -123,6 +125,7 @@ public class Ventana extends JFrame {
         dtm = new DefaultTableModel(0, 4);
         
         table = new JTable(dtm);
+        
 
         scroll = new JScrollPane(table);
         table.setModel(dtm);
