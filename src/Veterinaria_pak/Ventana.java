@@ -7,6 +7,7 @@ import java.util.HashSet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -71,7 +72,7 @@ public class Ventana extends JFrame {
             dtm.addRow(new Object[]{textoDNI.getText(), textoNombre.getText(), textoApellido.getText(), textoNacionalidad.getText()
             });}
             else{
-                System.out.println("aaaaaa");
+                JOptionPane.showMessageDialog(null, "Este persona ya existe", "Error", 2);
             }
         };
         btnAgregar.addActionListener(agregarr);
