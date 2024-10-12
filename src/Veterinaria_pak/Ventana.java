@@ -24,6 +24,7 @@ public class Ventana extends JFrame {
     private JTable table;
     private DefaultTableModel dtm;
 
+
     public Ventana() {
 
         // setResizable(false);
@@ -80,7 +81,8 @@ public class Ventana extends JFrame {
         ActionListener eliminarr = (ActionEvent e) -> {
             int fila = table.getSelectedRow();
             dtm.removeRow(fila);
-            dnisRegistrados.remove(textoDNI.getText());
+            if(dnisRegistrados.contains(textoDNI.getText()))
+                dnisRegistrados.remove(textoDNI.getText());
         };
         btnEliminar.addActionListener(eliminarr);
 
@@ -121,18 +123,26 @@ public class Ventana extends JFrame {
         String[] columnas = {"DNI", "NOMBRE", "APELLIDO", "NACIONALIDAD"};
 
 
-        
-        dtm = new DefaultTableModel(0, 4);
-        
-        table = new JTable(dtm);
-        
 
+        
+        dtm = new DefaultTableModel(columnas,0){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        
+        table = new JTable(dtm);        
         scroll = new JScrollPane(table);
         table.setModel(dtm);
         scroll.setBounds(40, 200, 500, 270);
         this.add(scroll);
-        dtm.setColumnIdentifiers(columnas);
-        
 
+
+    }
+    public void noEditable(JTable tabla){
+        DefaultTableModel modelo = new DefaultTableModel();
+            modelo.isCellEditable(1,2);
+        
     }
 }
