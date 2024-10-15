@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 
-public class Ventana extends JFrame {
+public class VentanaPrincipal extends JFrame {
     HashSet<String> dnisRegistrados = new HashSet<>();
     private JTextField textoNombre;
     private JTextField textoApellido;
@@ -25,7 +25,7 @@ public class Ventana extends JFrame {
     private DefaultTableModel dtm;
 
 
-    public Ventana() {
+    public VentanaPrincipal() {
 
         // setResizable(false);
         setVisible(true);
@@ -68,6 +68,8 @@ public class Ventana extends JFrame {
         
 
         ActionListener agregarr = (ActionEvent e) -> {
+            VentanaAgregar_Modificar ventana = new VentanaAgregar_Modificar();
+            
             if(textoDNI.getText().isEmpty() || textoNombre.getText().isEmpty() || textoApellido.getText().isEmpty() || textoNacionalidad.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "Hay campos que faltan rellenar", "Error", JOptionPane.WARNING_MESSAGE);
             }else{                
