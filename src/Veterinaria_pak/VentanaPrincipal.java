@@ -6,23 +6,16 @@ import java.awt.event.ActionListener;
 import java.util.HashSet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 
 public class VentanaPrincipal extends JFrame {
     HashSet<String> dnisRegistrados = new HashSet<>();
-    private JTextField textoNombre;
-    private JTextField textoApellido;
-    private JTextField textoDNI;
-    private JTextField textoNacionalidad;
     private JScrollPane scroll;
     private JTable table;
-    private DefaultTableModel dtm;
+    public DefaultTableModel dtm;
 
 
     public VentanaPrincipal() {
@@ -35,8 +28,8 @@ public class VentanaPrincipal extends JFrame {
         setTitle("Veterinaria");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         botones();
-        etiquetas();
-        texto();
+        // etiquetas();
+        // texto();
         tabla();
     }
 
@@ -68,27 +61,7 @@ public class VentanaPrincipal extends JFrame {
         
 
         ActionListener agregarr = (ActionEvent e) -> {
-            VentanaAgregar_Modificar ventana = new VentanaAgregar_Modificar();
-            
-            if(textoDNI.getText().isEmpty() || textoNombre.getText().isEmpty() || textoApellido.getText().isEmpty() || textoNacionalidad.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Hay campos que faltan rellenar", "Error", JOptionPane.WARNING_MESSAGE);
-            }else{                
-                String dni = textoDNI.getText();
-                if(!dnisRegistrados.contains(dni)){
-                    dnisRegistrados.add(dni);
-                dtm.addRow(new Object[]{textoDNI.getText(), textoNombre.getText(), textoApellido.getText(), textoNacionalidad.getText()
-                });
-                textoDNI.setText("");
-                textoNombre.setText("");
-                textoApellido.setText("");
-                textoNacionalidad.setText("");
-                textoNombre.requestFocusInWindow();
-            }
-                
-                else{
-                    JOptionPane.showMessageDialog(null, "Este persona ya existe", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
+            VentanaAgregar_Modificar ventana = new VentanaAgregar_Modificar(this);
         };
         btnAgregar.addActionListener(agregarr);
 
@@ -105,39 +78,7 @@ public class VentanaPrincipal extends JFrame {
             }
         };
         btnEliminar.addActionListener(eliminarr);
-
-    }
-
-    public void etiquetas() {
-        JLabel nombre = new JLabel("Nombre:");
-        nombre.setBounds(40, 10, 100, 100);
-        JLabel apellido = new JLabel("Apellido:");
-        apellido.setBounds(40, 40, 100, 100);
-        JLabel DNI = new JLabel("DNI:");
-        DNI.setBounds(40, 70, 100, 100);
-        JLabel nacionalidad = new JLabel("Nacionalidad:");
-        nacionalidad.setBounds(40, 100, 100, 100);
-        this.add(nombre);
-        this.add(apellido);
-        this.add(DNI);
-        this.add(nacionalidad);
-
-    }
-
-    public void texto() {
-        textoNombre = new JTextField();
-        textoNombre.setBounds(120, 50, 200, 20);
-        this.add(textoNombre);
-        textoApellido = new JTextField();
-        textoApellido.setBounds(120, 80, 200, 20);
-        this.add(textoApellido);
-        textoDNI = new JTextField();
-        textoDNI.setBounds(120, 110, 200, 20);
-        textoDNI.setToolTipText("Solo numeros");
-        this.add(textoDNI);
-        textoNacionalidad = new JTextField();
-        textoNacionalidad.setBounds(120, 140, 200, 20);
-        this.add(textoNacionalidad);
+    
     }
 
     public void tabla(){
@@ -159,11 +100,7 @@ public class VentanaPrincipal extends JFrame {
         scroll.setBounds(40, 200, 500, 270);
         this.add(scroll);
 
-
-    }
-    public void noEditable(JTable tabla){
-        DefaultTableModel modelo = new DefaultTableModel();
-            modelo.isCellEditable(1,2);
-        
     }
 }
+
+
