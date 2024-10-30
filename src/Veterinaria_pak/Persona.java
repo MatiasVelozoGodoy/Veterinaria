@@ -53,6 +53,4 @@ public abstract class Persona {
     public void Set_nacionalidad(String Nacionalidad){
         this.Nacionalidad = Nacionalidad;
     }
-
-
 }

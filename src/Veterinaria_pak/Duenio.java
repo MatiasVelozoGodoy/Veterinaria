@@ -7,14 +7,6 @@ public class Duenio extends Persona implements Serializable, Comportamiento, IDu
     public void comunicarse(){
         System.out.println("Se comunica menos técnica");
     }
-    @Override
-    public void isSoltero(){
-        // if(true){
-        //     System.out.println("Esta soltero");
-        // }else{
-        //     System.out.println("Esta en pareja");
-        // }
-    }
 
     @Override
     public void alimentarMascota(){

@@ -1,5 +1,6 @@
 package Veterinaria_pak;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
@@ -39,9 +40,21 @@ public class VentanaAgregar_Modificar extends JFrame {
         btnCancelar.setBounds(250, 400, 90, 30);
         this.add(btnCancelar);
 
+        ActionListener cancelar = (ActionEvent e) -> {
+            dispose();
+        };
+        btnCancelar.addActionListener(cancelar);
         ActionListener aceptar = (ActionEvent e) -> {
             if (textoDNI.getText().isEmpty() || textoNombre.getText().isEmpty() || textoApellido.getText().isEmpty()
                     || textoNacionalidad.getText().isEmpty()) {
+                if(textoNombre.getText().isEmpty())
+                    textoNombre.setBackground(Color.PINK);
+                if(textoApellido.getText().isEmpty())
+                    textoApellido.setBackground(Color.PINK);
+                if(textoDNI.getText().isEmpty())
+                    textoDNI.setBackground(Color.PINK);
+                if(textoNacionalidad.getText().isEmpty())
+                    textoNacionalidad.setBackground(Color.PINK);
                 JOptionPane.showMessageDialog(null, "Hay campos que faltan rellenar", "Error",
                         JOptionPane.WARNING_MESSAGE);
             } else {

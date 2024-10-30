@@ -10,14 +10,7 @@ public class Veterinario extends Persona implements Serializable, Comportamiento
         System.out.println("Se comunica de manera más técnica");
         
     }
-    @Override
-    public void isSoltero(){
-        // if(){
-        //     System.out.println("Esta soltero");
-        // }else{
-        //     System.out.println("Esta en pareja");
-        // }
-    }
+
 
     @Override
     public void diagnosticarAnimal() {
