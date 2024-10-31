@@ -92,6 +92,16 @@ public class VentanaAgregar_Modificar extends JFrame {
     }
 
     public void etiquetas() {
+        JLabel nombreCheck = new JLabel("X");
+        nombreCheck.setBounds(330, 10, 100, 100);
+        JLabel apellidoCheck = new JLabel("X");
+        apellidoCheck.setBounds(330, 40, 100, 100);
+        JLabel DNICheck = new JLabel("X");
+        DNICheck.setBounds(330, 70, 100, 100);
+        JLabel nacionalidadCheck = new JLabel("X");
+        nacionalidadCheck.setBounds(330, 100, 100, 100);
+
+
         JLabel nombre = new JLabel("Nombre:");
         nombre.setBounds(40, 10, 100, 100);
         JLabel apellido = new JLabel("Apellido:");
@@ -101,9 +111,13 @@ public class VentanaAgregar_Modificar extends JFrame {
         JLabel nacionalidad = new JLabel("Nacionalidad:");
         nacionalidad.setBounds(40, 100, 100, 100);
         this.add(nombre);
+        this.add(nombreCheck);
         this.add(apellido);
+        this.add(apellidoCheck);
         this.add(DNI);
+        this.add(DNICheck);
         this.add(nacionalidad);
+        this.add(nacionalidadCheck);
     }
 
     public void texto() {
