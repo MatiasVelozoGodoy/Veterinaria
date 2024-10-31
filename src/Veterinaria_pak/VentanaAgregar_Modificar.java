@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaAgregar_Modificar extends JFrame {
@@ -47,14 +49,23 @@ public class VentanaAgregar_Modificar extends JFrame {
         ActionListener aceptar = (ActionEvent e) -> {
             if (textoDNI.getText().isEmpty() || textoNombre.getText().isEmpty() || textoApellido.getText().isEmpty()
                     || textoNacionalidad.getText().isEmpty()) {
-                if(textoNombre.getText().isEmpty())
+                if(textoNombre.getText().isEmpty()){
                     textoNombre.setBackground(Color.PINK);
-                if(textoApellido.getText().isEmpty())
+                    verificarTexto(textoNombre);
+                }
+                if(textoApellido.getText().isEmpty()){
                     textoApellido.setBackground(Color.PINK);
-                if(textoDNI.getText().isEmpty())
+                    verificarTexto(textoApellido);
+                }
+                if(textoDNI.getText().isEmpty()){
                     textoDNI.setBackground(Color.PINK);
-                if(textoNacionalidad.getText().isEmpty())
+                    verificarTexto(textoDNI);
+                    ;
+                }
+                if(textoNacionalidad.getText().isEmpty()){
                     textoNacionalidad.setBackground(Color.PINK);
+                    verificarTexto(textoNacionalidad);
+                }
                 JOptionPane.showMessageDialog(null, "Hay campos que faltan rellenar", "Error",
                         JOptionPane.WARNING_MESSAGE);
             } else {
@@ -110,4 +121,32 @@ public class VentanaAgregar_Modificar extends JFrame {
         textoNacionalidad.setBounds(120, 140, 200, 20);
         this.add(textoNacionalidad);
     }
+    public void verificarTexto(JTextField texto){
+        texto.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                verificar();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                verificar();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                verificar();
+            }
+
+
+            private void verificar() {
+                if (!texto.getText().isEmpty()) {
+                    texto.setBackground(Color.WHITE);
+                }
+            }
+            
+        });
+
+    }
+
 }
