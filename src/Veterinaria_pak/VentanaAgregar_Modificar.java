@@ -21,6 +21,10 @@ public class VentanaAgregar_Modificar extends JFrame {
     private JTextField textoDNI;
     private JTextField textoNacionalidad;
     private VentanaPrincipal ventanaPrincipal;
+    private JLabel nombreCheck;
+    private JLabel apellidoCheck;
+    private JLabel DNICheck;
+    private JLabel nacionalidadCheck;
 
     public VentanaAgregar_Modificar(VentanaPrincipal ventanaPrincipal) {
         this.ventanaPrincipal = ventanaPrincipal;
@@ -51,20 +55,24 @@ public class VentanaAgregar_Modificar extends JFrame {
                     || textoNacionalidad.getText().isEmpty()) {
                 if(textoNombre.getText().isEmpty()){
                     textoNombre.setBackground(Color.PINK);
-                    verificarTexto(textoNombre);
+                    nombreCheck.setVisible(true);
+                    verificarTexto(textoNombre, nombreCheck);
                 }
                 if(textoApellido.getText().isEmpty()){
                     textoApellido.setBackground(Color.PINK);
-                    verificarTexto(textoApellido);
+                    apellidoCheck.setVisible(true);
+                    verificarTexto(textoApellido, apellidoCheck);
                 }
                 if(textoDNI.getText().isEmpty()){
                     textoDNI.setBackground(Color.PINK);
-                    verificarTexto(textoDNI);
-                    ;
+                    DNICheck.setVisible(true);
+                    verificarTexto(textoDNI, DNICheck);
+                    
                 }
                 if(textoNacionalidad.getText().isEmpty()){
                     textoNacionalidad.setBackground(Color.PINK);
-                    verificarTexto(textoNacionalidad);
+                    nacionalidadCheck.setVisible(true);
+                    verificarTexto(textoNacionalidad, nacionalidadCheck);
                 }
                 JOptionPane.showMessageDialog(null, "Hay campos que faltan rellenar", "Error",
                         JOptionPane.WARNING_MESSAGE);
@@ -92,24 +100,40 @@ public class VentanaAgregar_Modificar extends JFrame {
     }
 
     public void etiquetas() {
-        JLabel nombreCheck = new JLabel("X");
+        nombreCheck = new JLabel("*");
         nombreCheck.setBounds(330, 10, 100, 100);
-        JLabel apellidoCheck = new JLabel("X");
+        nombreCheck.setVisible(false);
+        nombreCheck.setForeground(Color.RED);
+
+        apellidoCheck = new JLabel("*");
         apellidoCheck.setBounds(330, 40, 100, 100);
-        JLabel DNICheck = new JLabel("X");
+        apellidoCheck.setVisible(false);
+        apellidoCheck.setForeground(Color.RED);
+
+        DNICheck = new JLabel("*");
         DNICheck.setBounds(330, 70, 100, 100);
-        JLabel nacionalidadCheck = new JLabel("X");
+        DNICheck.setVisible(false);
+        DNICheck.setForeground(Color.RED);
+
+        nacionalidadCheck = new JLabel("*");
         nacionalidadCheck.setBounds(330, 100, 100, 100);
+        nacionalidadCheck.setVisible(false);
+        nacionalidadCheck.setForeground(Color.RED);
+
 
 
         JLabel nombre = new JLabel("Nombre:");
         nombre.setBounds(40, 10, 100, 100);
+
         JLabel apellido = new JLabel("Apellido:");
         apellido.setBounds(40, 40, 100, 100);
+
         JLabel DNI = new JLabel("DNI:");
         DNI.setBounds(40, 70, 100, 100);
+
         JLabel nacionalidad = new JLabel("Nacionalidad:");
         nacionalidad.setBounds(40, 100, 100, 100);
+
         this.add(nombre);
         this.add(nombreCheck);
         this.add(apellido);
@@ -135,7 +159,7 @@ public class VentanaAgregar_Modificar extends JFrame {
         textoNacionalidad.setBounds(120, 140, 200, 20);
         this.add(textoNacionalidad);
     }
-    public void verificarTexto(JTextField texto){
+    public void verificarTexto(JTextField texto, JLabel check){
         texto.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -156,6 +180,7 @@ public class VentanaAgregar_Modificar extends JFrame {
             private void verificar() {
                 if (!texto.getText().isEmpty()) {
                     texto.setBackground(Color.WHITE);
+                    check.setVisible(false);
                 }
             }
             
