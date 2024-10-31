@@ -20,7 +20,7 @@ public class VentanaPrincipal extends JFrame {
 
     public VentanaPrincipal() {
 
-        // setResizable(false);
+        setResizable(false);
         setVisible(true);
         setSize(600, 600);
         setLayout(null);
@@ -28,8 +28,6 @@ public class VentanaPrincipal extends JFrame {
         setTitle("Veterinaria");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         botones();
-        // etiquetas();
-        // texto();
         tabla();
     }
 

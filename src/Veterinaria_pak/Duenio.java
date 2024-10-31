@@ -13,4 +13,14 @@ public class Duenio extends Persona implements Serializable, Comportamiento, IDu
         System.out.println("El dueño esta alimentando a su mascota");
     }
 
+    @Override
+    public void movimiento(){
+        System.out.println("");
+    }
+
+    @Override
+    public void alimentarse() {
+        System.out.println("");
+    }
+
 }

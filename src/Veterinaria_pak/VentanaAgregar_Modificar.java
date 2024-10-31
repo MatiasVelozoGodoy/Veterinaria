@@ -58,23 +58,23 @@ public class VentanaAgregar_Modificar extends JFrame {
                 if(textoNombre.getText().isEmpty()){
                     textoNombre.setBackground(Color.PINK);
                     nombreCheck.setVisible(true);
-                    verificarTexto(textoNombre);
+                    verificarTexto(textoNombre, nombreCheck);
                 }
                 if(textoApellido.getText().isEmpty()){
                     textoApellido.setBackground(Color.PINK);
                     apellidoCheck.setVisible(true);
-                    verificarTexto(textoApellido);
+                    verificarTexto(textoApellido, apellidoCheck);
                 }
                 if(textoDNI.getText().isEmpty()){
                     textoDNI.setBackground(Color.PINK);
                     DNICheck.setVisible(true);
-                    verificarTexto(textoDNI);
+                    verificarTexto(textoDNI, DNICheck);
                     
                 }
                 if(textoNacionalidad.getText().isEmpty()){
                     textoNacionalidad.setBackground(Color.PINK);
                     nacionalidadCheck.setVisible(true);
-                    verificarTexto(textoNacionalidad);
+                    verificarTexto(textoNacionalidad, nacionalidadCheck);
                 }
                 JOptionPane.showMessageDialog(null, "Hay campos que faltan rellenar", "Error",
                         JOptionPane.WARNING_MESSAGE);
@@ -164,7 +164,7 @@ public class VentanaAgregar_Modificar extends JFrame {
         textoNacionalidad.setBounds(120, 140, 200, 20);
         this.add(textoNacionalidad);
     }
-    public void verificarTexto(JTextField texto){
+    public void verificarTexto(JTextField texto, JLabel checker){
         texto.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -185,6 +185,7 @@ public class VentanaAgregar_Modificar extends JFrame {
             private void verificar() {
                 if (!texto.getText().isEmpty()) {
                     texto.setBackground(Color.WHITE);
+                    checker.setVisible(false);
                 }
             }            
         });

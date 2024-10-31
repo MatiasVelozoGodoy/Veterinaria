@@ -21,5 +21,17 @@ public class Veterinario extends Persona implements Serializable, Comportamiento
     public void recetarTratamiento() {
         System.out.println("El veterinario le esta recetando medicamento al animal");
     }
+
+    @Override
+    public void movimiento() {
+        System.out.println("Camina de manera normal");
+    }
+
+
+    @Override
+    public void alimentarse() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'alimentarse'");
+    }
     
 }
