@@ -42,37 +42,39 @@ public class VentanaAgregar_Modificar extends JFrame {
         JButton btnAceptar = new JButton("Aceptar");
         btnAceptar.setBounds(100, 400, 90, 30);
         this.add(btnAceptar);
+
         JButton btnCancelar = new JButton("Cancelar");
-        btnCancelar.setBounds(250, 400, 90, 30);
+        btnCancelar.setBounds(250, 400, 90, 30);        
         this.add(btnCancelar);
 
         ActionListener cancelar = (ActionEvent e) -> {
             dispose();
         };
         btnCancelar.addActionListener(cancelar);
+
         ActionListener aceptar = (ActionEvent e) -> {
             if (textoDNI.getText().isEmpty() || textoNombre.getText().isEmpty() || textoApellido.getText().isEmpty()
                     || textoNacionalidad.getText().isEmpty()) {
                 if(textoNombre.getText().isEmpty()){
                     textoNombre.setBackground(Color.PINK);
                     nombreCheck.setVisible(true);
-                    verificarTexto(textoNombre, nombreCheck);
+                    verificarTexto(textoNombre);
                 }
                 if(textoApellido.getText().isEmpty()){
                     textoApellido.setBackground(Color.PINK);
                     apellidoCheck.setVisible(true);
-                    verificarTexto(textoApellido, apellidoCheck);
+                    verificarTexto(textoApellido);
                 }
                 if(textoDNI.getText().isEmpty()){
                     textoDNI.setBackground(Color.PINK);
                     DNICheck.setVisible(true);
-                    verificarTexto(textoDNI, DNICheck);
+                    verificarTexto(textoDNI);
                     
                 }
                 if(textoNacionalidad.getText().isEmpty()){
                     textoNacionalidad.setBackground(Color.PINK);
                     nacionalidadCheck.setVisible(true);
-                    verificarTexto(textoNacionalidad, nacionalidadCheck);
+                    verificarTexto(textoNacionalidad);
                 }
                 JOptionPane.showMessageDialog(null, "Hay campos que faltan rellenar", "Error",
                         JOptionPane.WARNING_MESSAGE);
@@ -148,18 +150,21 @@ public class VentanaAgregar_Modificar extends JFrame {
         textoNombre = new JTextField();
         textoNombre.setBounds(120, 50, 200, 20);
         this.add(textoNombre);
+
         textoApellido = new JTextField();
         textoApellido.setBounds(120, 80, 200, 20);
         this.add(textoApellido);
+
         textoDNI = new JTextField();
         textoDNI.setBounds(120, 110, 200, 20);
         textoDNI.setToolTipText("Solo numeros");
         this.add(textoDNI);
+
         textoNacionalidad = new JTextField();
         textoNacionalidad.setBounds(120, 140, 200, 20);
         this.add(textoNacionalidad);
     }
-    public void verificarTexto(JTextField texto, JLabel check){
+    public void verificarTexto(JTextField texto){
         texto.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -180,10 +185,8 @@ public class VentanaAgregar_Modificar extends JFrame {
             private void verificar() {
                 if (!texto.getText().isEmpty()) {
                     texto.setBackground(Color.WHITE);
-                    check.setVisible(false);
                 }
-            }
-            
+            }            
         });
 
     }
