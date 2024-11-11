@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -98,11 +99,13 @@ public class VentanaPrincipal extends JFrame {
         table.setBackground(new Color(0, 0, 0, 0));
         ((DefaultTableCellRenderer) table.getDefaultRenderer(Object.class)).setOpaque(false);
         table.setForeground(new Color(220, 220, 220));
+        table.setSelectionForeground(new Color(117, 169, 156));
 
         scroll = new JScrollPane(table);
         table.setModel(dtm);
         scroll.setBounds(40, 40, 500, 400);
         scroll.setOpaque(false); 
+        scroll.setBorder(new EmptyBorder(0,0,0,0));
         scroll.getViewport().setOpaque(false);
 
         panel1.add(scroll);
@@ -118,7 +121,7 @@ public class VentanaPrincipal extends JFrame {
                 int width = getWidth();
                 int height = getHeight();
                 // Crear el degradado desde el color inicial hasta el color final
-                GradientPaint gradient = new GradientPaint(0, 0, new Color(39, 70, 90), 0, height,
+                GradientPaint gradient = new GradientPaint(0, 0, new Color(44, 77, 96), 0, height,
                         new Color(17, 25, 27));
                 g2d.setPaint(gradient);
                 g2d.fillRect(0, 0, width, height);
