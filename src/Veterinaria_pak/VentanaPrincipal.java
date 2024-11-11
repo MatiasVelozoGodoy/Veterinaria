@@ -54,14 +54,14 @@ public class VentanaPrincipal extends JFrame {
         panel1.add(btnModificar);
         panel1.add(btnEliminar);
         panel1.add(btnDetalles);
-        btnAgregar.setBackground(Color.GREEN.darker());
-        btnAgregar.setForeground(Color.WHITE);
-        btnEliminar.setBackground(Color.RED.darker());
-        btnEliminar.setForeground(Color.WHITE);
-        btnDetalles.setBackground(Color.BLUE.darker());
-        btnDetalles.setForeground(Color.WHITE);
-        btnModificar.setBackground(Color.yellow.darker());
-        btnModificar.setForeground(Color.WHITE);
+        btnAgregar.setBackground( new Color(88, 219, 164));
+        btnAgregar.setForeground(new Color(17, 25, 27));
+        btnEliminar.setBackground(new Color(196, 81, 131));
+        btnEliminar.setForeground(new Color(17, 25, 27));
+        btnDetalles.setBackground(new Color(255, 111, 71));
+        btnDetalles.setForeground(new Color(17, 25, 27));
+        btnModificar.setBackground(new Color(255, 199, 69));
+        btnModificar.setForeground(new Color(17, 25, 27));
 
         ActionListener agregarr = (ActionEvent e) -> {
             VentanaAgregar_Modificar ventana = new VentanaAgregar_Modificar(this);
@@ -85,8 +85,7 @@ public class VentanaPrincipal extends JFrame {
     }
 
     private void tabla() {
-        String[] columnas = { "DNI", "NOMBRE", "APELLIDO", "NACIONALIDAD" };
-
+        String[] columnas = { "NOMBRE", "RAZA", "MASCOTA", "DUEÑO" };
         dtm = new DefaultTableModel(columnas, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -97,14 +96,17 @@ public class VentanaPrincipal extends JFrame {
         table = new JTable(dtm);
         table.setOpaque(false);
         table.setBackground(new Color(0, 0, 0, 0));
+        //DefaultTableColumnModel)
+        
         ((DefaultTableCellRenderer) table.getDefaultRenderer(Object.class)).setOpaque(false);
         table.setForeground(new Color(220, 220, 220));
-        table.setSelectionForeground(new Color(117, 169, 156));
+        table.setSelectionForeground(new Color(255, 199, 69));
 
         scroll = new JScrollPane(table);
         table.setModel(dtm);
         scroll.setBounds(40, 40, 500, 400);
         scroll.setOpaque(false); 
+        
         scroll.setBorder(new EmptyBorder(0,0,0,0));
         scroll.getViewport().setOpaque(false);
 
@@ -121,7 +123,7 @@ public class VentanaPrincipal extends JFrame {
                 int width = getWidth();
                 int height = getHeight();
                 // Crear el degradado desde el color inicial hasta el color final
-                GradientPaint gradient = new GradientPaint(0, 0, new Color(44, 77, 96), 0, height,
+                GradientPaint gradient = new GradientPaint(0, 0, new Color(93, 131, 136), 0, height,
                         new Color(17, 25, 27));
                 g2d.setPaint(gradient);
                 g2d.fillRect(0, 0, width, height);

@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -15,7 +16,11 @@ import javax.swing.table.DefaultTableModel;
 
 public class VentanaAgregar_Modificar extends JFrame {
     private HashSet<String> dnisRegistrados = new HashSet<>();
-    private JTextField textoNombre;
+    private JTextField textoRaza;
+    private JComboBox tipoMascota;
+    private JTextField textoNombreD;
+    private JTextField textoDuenio;
+    private JTextField textoNombreM;
     private JTextField textoApellido;
     private JTextField textoDNI;
     private JTextField textoNacionalidad;
@@ -32,7 +37,7 @@ public class VentanaAgregar_Modificar extends JFrame {
         setLayout(null);
         setVisible(true);
         setTitle("Agregar");
-
+        comboBox();
         botones();
         etiquetas();
         texto();
@@ -53,50 +58,50 @@ public class VentanaAgregar_Modificar extends JFrame {
         btnCancelar.addActionListener(cancelar);
 
         ActionListener aceptar = (ActionEvent e) -> {
-            if (textoDNI.getText().isEmpty() || textoNombre.getText().isEmpty() || textoApellido.getText().isEmpty()
-                    || textoNacionalidad.getText().isEmpty()) {
-                if(textoNombre.getText().isEmpty()){
-                    textoNombre.setBackground(Color.PINK);
-                    nombreCheck.setVisible(true);
-                    verificarTexto(textoNombre, nombreCheck);
-                }
-                if(textoApellido.getText().isEmpty()){
-                    textoApellido.setBackground(Color.PINK);
-                    apellidoCheck.setVisible(true);
-                    verificarTexto(textoApellido, apellidoCheck);
-                }
-                if(textoDNI.getText().isEmpty()){
-                    textoDNI.setBackground(Color.PINK);
-                    DNICheck.setVisible(true);
-                    verificarTexto(textoDNI, DNICheck);
+            // if (textoDNI.getText().isEmpty() || textoNombreD.getText().isEmpty() || textoApellido.getText().isEmpty()
+            //         || textoNacionalidad.getText().isEmpty()) {
+            //     if(textoNombreD.getText().isEmpty()){
+            //         textoNombreD.setBackground(Color.PINK);
+            //         nombreCheck.setVisible(true);
+            //         verificarTexto(textoNombreD, nombreCheck);
+            //     }
+            //     if(textoApellido.getText().isEmpty()){
+            //         textoApellido.setBackground(Color.PINK);
+            //         apellidoCheck.setVisible(true);
+            //         verificarTexto(textoApellido, apellidoCheck);
+            //     }
+            //     if(textoDNI.getText().isEmpty()){
+            //         textoDNI.setBackground(Color.PINK);
+            //         DNICheck.setVisible(true);
+            //         verificarTexto(textoDNI, DNICheck);
                     
-                }
-                if(textoNacionalidad.getText().isEmpty()){
-                    textoNacionalidad.setBackground(Color.PINK);
-                    nacionalidadCheck.setVisible(true);
-                    verificarTexto(textoNacionalidad, nacionalidadCheck);
-                }
-                JOptionPane.showMessageDialog(null, "Hay campos que faltan rellenar", "Error",
-                        JOptionPane.WARNING_MESSAGE);
-            } else {
-                String dni = textoDNI.getText();
-                if (!dnisRegistrados.contains(dni)) {
-                    dnisRegistrados.add(dni);
+            //     }
+            //     if(textoNacionalidad.getText().isEmpty()){
+            //         textoNacionalidad.setBackground(Color.PINK);
+            //         nacionalidadCheck.setVisible(true);
+            //         verificarTexto(textoNacionalidad, nacionalidadCheck);
+            //     }
+            //     JOptionPane.showMessageDialog(null, "Hay campos que faltan rellenar", "Error",
+            //             JOptionPane.WARNING_MESSAGE);
+            // } else {
+                // String dni = textoDNI.getText();
+                // if (!dnisRegistrados.contains(dni)) {
+                //     dnisRegistrados.add(dni);
                     DefaultTableModel dtm = new DefaultTableModel();
-                    ventanaPrincipal.dtm.addRow(new Object[] { textoDNI.getText(), textoNombre.getText(), textoApellido.getText(),
-                            textoNacionalidad.getText()
+                    ventanaPrincipal.dtm.addRow(new Object[] { textoNombreM.getText(), textoRaza.getText(), tipoMascota.getSelectedItem().toString(),
+                            textoDuenio.getText()
                     });
-                    textoDNI.setText("");
-                    textoNombre.setText("");
-                    textoApellido.setText("");
-                    textoNacionalidad.setText("");
-                    textoNombre.requestFocusInWindow();
-                }
+                    // textoDNI.setText("");
+                    // textoNombreD.setText("");
+                    // textoApellido.setText("");
+                    // textoNacionalidad.setText("");
+                    // textoNombreD.requestFocusInWindow();
+                // }
 
-                else {
+                // else {
                     JOptionPane.showMessageDialog(null, "Este persona ya existe", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
+                // }
+            // }
         };
         btnAceptar.addActionListener(aceptar);
     }
@@ -127,13 +132,13 @@ public class VentanaAgregar_Modificar extends JFrame {
         JLabel nombre = new JLabel("Nombre:");
         nombre.setBounds(40, 10, 100, 100);
 
-        JLabel apellido = new JLabel("Apellido:");
+        JLabel apellido = new JLabel("Raza:");
         apellido.setBounds(40, 40, 100, 100);
 
-        JLabel DNI = new JLabel("DNI:");
+        JLabel DNI = new JLabel("Mascota:");
         DNI.setBounds(40, 70, 100, 100);
 
-        JLabel nacionalidad = new JLabel("Nacionalidad:");
+        JLabel nacionalidad = new JLabel("Dueño:");
         nacionalidad.setBounds(40, 100, 100, 100);
 
         this.add(nombre);
@@ -147,22 +152,22 @@ public class VentanaAgregar_Modificar extends JFrame {
     }
 
     public void texto() {
-        textoNombre = new JTextField();
-        textoNombre.setBounds(120, 50, 200, 20);
-        this.add(textoNombre);
+        textoNombreM = new JTextField();
+        textoNombreM.setBounds(120, 50, 200, 20);
+        this.add(textoNombreM);
 
-        textoApellido = new JTextField();
-        textoApellido.setBounds(120, 80, 200, 20);
-        this.add(textoApellido);
+        textoRaza = new JTextField();
+        textoRaza.setBounds(120, 80, 200, 20);
+        this.add(textoRaza);
 
-        textoDNI = new JTextField();
-        textoDNI.setBounds(120, 110, 200, 20);
-        textoDNI.setToolTipText("Solo numeros");
-        this.add(textoDNI);
+        // textoMascota = new JTextField();
+        // textoMascota.setBounds(120, 110, 200, 20);
+        // textoMascota.setToolTipText("Solo numeros");
+        // this.add(textoMascota);
 
-        textoNacionalidad = new JTextField();
-        textoNacionalidad.setBounds(120, 140, 200, 20);
-        this.add(textoNacionalidad);
+        textoDuenio = new JTextField();
+        textoDuenio.setBounds(120, 140, 200, 20);
+        this.add(textoDuenio);
     }
     public void verificarTexto(JTextField texto, JLabel checker){
         texto.getDocument().addDocumentListener(new DocumentListener() {
@@ -189,6 +194,14 @@ public class VentanaAgregar_Modificar extends JFrame {
                 }
             }            
         });
+
+        
+    }
+    private void comboBox(){
+        String[] mascotas =  {"Perro", "Gato"};
+        tipoMascota = new JComboBox(mascotas);
+        tipoMascota.setBounds(120, 110, 200, 20);
+        this.add(tipoMascota);
 
     }
 
