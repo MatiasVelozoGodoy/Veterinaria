@@ -4,6 +4,14 @@ import java.io.Serializable;
 
 
 public class Veterinario extends Persona implements Serializable, Comportamiento, IVeterinario{
+    private String nroMatricula;
+
+    public Veterinario(){
+
+    }
+    public Veterinario(String nroMatricula){
+        this.nroMatricula = nroMatricula;
+    }
 
     @Override
     public void comunicarse() {
@@ -30,8 +38,7 @@ public class Veterinario extends Persona implements Serializable, Comportamiento
 
     @Override
     public void alimentarse() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'alimentarse'");
+        System.out.println("");
     }
     
 }

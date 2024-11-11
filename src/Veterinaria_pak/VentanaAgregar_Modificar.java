@@ -14,8 +14,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaAgregar_Modificar extends JFrame {
-
-    HashSet<String> dnisRegistrados = new HashSet<>();
+    private HashSet<String> dnisRegistrados = new HashSet<>();
     private JTextField textoNombre;
     private JTextField textoApellido;
     private JTextField textoDNI;
@@ -25,6 +24,7 @@ public class VentanaAgregar_Modificar extends JFrame {
     private JLabel apellidoCheck;
     private JLabel DNICheck;
     private JLabel nacionalidadCheck;
+
 
     public VentanaAgregar_Modificar(VentanaPrincipal ventanaPrincipal) {
         this.ventanaPrincipal = ventanaPrincipal;
